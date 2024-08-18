@@ -12,22 +12,38 @@
                     <tr>
                         <th scope="col">Rang</th>
                         <th scope="col">Pseudo</th>
-                        <th scope="col">Points</th> <!-- Enlèvement de {{ league|upper }} pour que seuls les points s'affichent -->
+                        <th scope="col">Points</th>
                     </tr>
                 </thead>
                 <tbody>
+                    <!-- Afficher l'utilisateur connecté en premier -->
+                    <tr class="table-primary"> <!-- Classe Bootstrap pour une ligne surlignée -->
+                        <td>{{ userRank }}</td>
+                        <td>{{ currentUser.pseudo }}</td>
+                        <td>
+                            {% if league == 'lfb' %}
+                                {{ currentUser.ptlLfb }}
+                            {% else %}
+                                {{ currentUser.ptLf2 }}
+                            {% endif %}
+                        </td>
+                    </tr>
+
+                    <!-- Afficher le reste du classement en sautant la position de l'utilisateur connecté -->
                     {% for user in users %}
-                        <tr>
-                            <td>{{ loop.index }}</td>
-                            <td>{{ user.pseudo }}</td>
-                            <td>
-                                {% if league == 'lfb' %}
-                                    {{ user.ptlLfb }}
-                                {% else %}
-                                    {{ user.ptLf2 }}
-                                {% endif %}
-                            </td>
-                        </tr>
+                        {% if loop.index != userRank %}
+                            <tr>
+                                <td>{{ loop.index }}</td>
+                                <td>{{ user.pseudo }}</td>
+                                <td>
+                                    {% if league == 'lfb' %}
+                                        {{ user.ptlLfb }}
+                                    {% else %}
+                                        {{ user.ptLf2 }}
+                                    {% endif %}
+                                </td>
+                            </tr>
+                        {% endif %}
                     {% endfor %}
                 </tbody>
             </table>
