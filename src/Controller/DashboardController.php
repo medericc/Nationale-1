@@ -222,10 +222,10 @@ if ($user instanceof User) {
     #[Route('/ranking/week', name: 'ranking_week')]
     public function rankingWeek(Request $request, UserRepository $userRepository, WeekRepository $weekRepository): Response
     {
-        // Get the league from the URL query parameter, default to 'lfb' if not provided
+        // Obtenir la ligue à partir du paramètre d'URL, par défaut 'lfb'
         $league = $request->query->get('league', 'lfb');
     
-        // Define week ranges based on the league
+        // Définir les plages de semaines en fonction de la ligue
         if ($league === 'lfb') {
             $startWeek = 1;
             $endWeek = 22;
@@ -236,22 +236,23 @@ if ($user instanceof User) {
             throw $this->createNotFoundException('Invalid league specified.');
         }
     
-        // Find the latest filled week within the specified range
+        // Trouver la dernière semaine remplie dans la plage spécifiée
         $latestWeek = $weekRepository->findLatestFilledWeek($startWeek, $endWeek);
     
         if (!$latestWeek) {
             throw $this->createNotFoundException('No filled week found for the specified league.');
         }
     
-        // Get users ordered by their points in the specified league
+        // Obtenir les utilisateurs triés par leurs points dans la ligue spécifiée
         $users = $userRepository->findAllOrderedByPoints($league);
     
-        // Render the ranking page with the retrieved data
         return $this->render('dashboard/ranking.week.html.twig', [
             'week' => $latestWeek,
             'users' => $users,
             'league' => $league,
+            'hasData' => !empty($users) && $latestWeek !== null,
         ]);
     }
+    
     
 }

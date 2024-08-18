@@ -1,16 +1,22 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Week {{ league }} Ranking</h1>
-
+   
     {% if hasData %}
-        <h2>Week {{ week.id }} Ranking for League {{ league }}</h2>
+        <h2>
+            Classement pour la semaine 
+            {% if league == 'lfb' %}
+                {{ week.id }} dans la Poule A
+            {% else %}
+                {{ week.id - 22 }} dans la Poule B
+            {% endif %}
+        </h2>
 
         <table>
             <thead>
                 <tr>
-                    <th>Rank</th>
-                    <th>User</th>
+                    <th>Rang</th>
+                    <th>Utilisateur</th>
                     <th>Points</th>
                 </tr>
             </thead>
@@ -18,13 +24,19 @@
                 {% for user in users %}
                     <tr>
                         <td>{{ loop.index }}</td>
-                        <td>{{ user.username }}</td>
-                        <td>{{ user.points }}</td>
+                        <td>{{ user.pseudo }}</td>
+                        <td>
+                            {% if league == 'lfb' %}
+                                {{ user.ptlLfb }}
+                            {% else %}
+                                {{ user.ptLf2 }}
+                            {% endif %}
+                        </td>
                     </tr>
                 {% endfor %}
             </tbody>
         </table>
     {% else %}
-        <p>No matches played yet for the league {{ league }}.</p>
+        <p>Aucun match n'a encore été joué pour la ligue {{ league }}.</p>
     {% endif %}
 {% endblock %}
