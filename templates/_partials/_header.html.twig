@@ -15,20 +15,20 @@
         <div class="d-flex flex-row align-items-center">
             {% if app.user is not null %}
                 <div class="text-center text-lg-left me-4">
-                    <p class="font-bold text-black">LFB</p>
+                    <p class="font-bold text-black">Poule A</p>
                     <p class="text-black"> {{ app.user.getPtlLfb() }}pts ({{ rankLFB }}e)</p>
                 </div>
                 <div class="text-center text-lg-left">
-                    <p class="font-bold text-black">LF2</p>
+                    <p class="font-bold text-black">Poule B</p>
                     <p class="text-black"> {{ app.user.getPtLf2() }}pts ({{ rankLF2 }}e)</p>
                 </div>
             {% else %}
                 <div class="text-center text-lg-left me-4">
-                    <p class="font-bold text-black">LFB</p>
+                    <p class="font-bold text-black">Poule A</p>
                     <p class="text-black">Points: -</p>
                 </div>
                 <div class="text-center text-lg-left">
-                    <p class="font-bold text-black">LF2</p>
+                    <p class="font-bold text-black">Poule B</p>
                     <p class="text-black">Points: -</p>
                 </div>
             {% endif %}
@@ -45,7 +45,7 @@
                 <!-- Dropdown Deck LFB -->
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownDeckLFB" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        DECK LFB
+                        Poule A
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdownDeckLFB">
                         {% for weekLFB in app.session.get('weeksLFB') %}
@@ -57,7 +57,7 @@
                 <!-- Dropdown Deck LF2 -->
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownDeckLF2" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        DECK LF2
+                        Poule B
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdownDeckLF2">
                         {% for weekLF2 in app.session.get('weeksLF2') %}
@@ -71,7 +71,7 @@
 <!-- Dropdown Ranking LFB -->
 <li class="nav-item dropdown">
     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownRankingLFB" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-        RANKING LFB
+        RANKING A
     </a>
     <ul class="dropdown-menu" aria-labelledby="navbarDropdownRankingLFB">
         <li><a class="dropdown-item" href="{{ path('ranking_week', {'league': 'lfb'}) }}">Week</a></li>
@@ -82,7 +82,7 @@
 <!-- Dropdown Ranking LF2 -->
 <li class="nav-item dropdown">
     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownRankingLF2" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-        RANKING LF2
+        RANKING B
     </a>
     <ul class="dropdown-menu" aria-labelledby="navbarDropdownRankingLF2">
         <li><a class="dropdown-item" href="{{ path('ranking_week', {'league': 'lf2'}) }}">Week</a></li>
