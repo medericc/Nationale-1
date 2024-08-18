@@ -3,11 +3,39 @@
 {% block title %}Dashboard{% endblock %}
 
 {% block body %}
-<div class="container-fluid mt-5">
+<style>
+    /* Arrière-plan de la page */
+    body {
+        background-color: #f0f0f0; /* Gris clair mais pas trop */
+    }
+
+    /* Cartes avec fond rose clair */
+    .card-custom {
+        background-color: #f8d7da; /* Rose clair */
+        color: #721c24; /* Texte plus sombre pour le contraste */
+    }
+
+    /* Ajuster les marges pour éviter le débordement */
+    .container-fluid {
+        padding: 15px;
+    }
+
+    /* Réduire la largeur du bloc 5 MAJEUR pour éviter le débordement */
+    .card-deck-custom {
+        max-width: 90%;
+        margin: 0 auto; /* Centrer le bloc */
+    }
+
+    .text-light {
+        color: #721c24 !important; /* Assurer un bon contraste */
+    }
+</style>
+
+<div class="container-fluid mt-3">
     <div class="row">
         <!-- Première ligne de cartes -->
-        <div class="col-12 col-md-6 mb-4"> <!-- Sur mobile, occupe toute la largeur, sur écran moyen et plus, occupe la moitié -->
-            <div class="card bg-danger text-light p-3 h-100 text-center"> <!-- h-100 pour une hauteur égale, text-center pour centrer -->
+        <div class="col-12 col-md-6 mb-4">
+            <div class="card card-custom text-center p-3 h-100">
                 <h1 class="card-title">Poule A</h1>
                 {% if latestWeekLFB is not null %}
                     <h2>{{ totalPointsLFB | default(0) }} PTS SEMAINE {{ latestWeekLFB.id }}</h2>
@@ -18,8 +46,8 @@
                 {% endif %}
             </div>
         </div>
-        <div class="col-12 col-md-6 mb-4"> <!-- Sur mobile, occupe toute la largeur, sur écran moyen et plus, occupe la moitié -->
-            <div class="card bg-danger text-light p-3 h-100 text-center"> <!-- h-100 pour une hauteur égale, text-center pour centrer -->
+        <div class="col-12 col-md-6 mb-4">
+            <div class="card card-custom text-center p-3 h-100">
                 <h1 class="card-title">Poule B</h1>
                 {% if latestWeekLF2 is not null %}
                     <h2>{{ totalPointsLF2 | default(0) }} PTS SEMAINE {{ (latestWeekLF2.id - 22) }}</h2>
@@ -34,30 +62,30 @@
 
     <div class="row">
         <!-- Deuxième ligne de cartes -->
-        <div class="col-12 col-md-6 mb-4"> <!-- Sur mobile, occupe toute la largeur, sur écran moyen et plus, occupe la moitié -->
-            <div class="card bg-danger text-light p-3 h-100 text-center"> <!-- h-100 pour une hauteur égale, text-center pour centrer -->
+        <div class="col-12 col-md-6 mb-4">
+            <div class="card card-custom text-center p-3 h-100">
                 <h1 class="card-title">Poule A</h1>
                 <h2>{{ app.user.getPtlLfb | default(0) }} PTS SAISON</h2>
                 <h3>{{ rankLFB | default(0) }}e / {{ totalUsersLFB | default(0) }}</h3>
             </div>
         </div>
-        <div class="col-12 col-md-6 mb-4"> <!-- Sur mobile, occupe toute la largeur, sur écran moyen et plus, occupe la moitié -->
-            <div class="card bg-danger text-light p-3 h-100 text-center"> <!-- h-100 pour une hauteur égale, text-center pour centrer -->
+        <div class="col-12 col-md-6 mb-4">
+            <div class="card card-custom text-center p-3 h-100">
                 <h1 class="card-title">Poule B</h1>
                 <h2>{{ app.user.getPtLf2 | default(0) }} PTS SAISON</h2>
                 <h3>{{ rankLF2 | default(0) }}e / {{ totalUsersLF2 | default(0) }}</h3>
             </div>
         </div>
     </div>
-</div>
 
-<div class="row mb-4">
-    <!-- Troisième ligne de cartes (deck) -->
-    <div class="col-12"> <!-- Sur mobile, occupe toute la largeur -->
-        <div class="card bg-danger text-light p-3 h-100 text-center"> <!-- h-100 permet au deck d'occuper toute la hauteur possible, text-center pour centrer -->
-            <h1 class="card-title">5 MAJEUR</h1>
-            <h2>Poule A</h2>
-            <h2>Poule B</h2>
+    <div class="row mb-4">
+        <!-- Troisième ligne de cartes (deck) -->
+        <div class="col-12 card-deck-custom">
+            <div class="card card-custom text-center p-3 h-100">
+                <h1 class="card-title">5 MAJEUR</h1>
+                <h2>Poule A</h2>
+                <h2>Poule B</h2>
+            </div>
         </div>
     </div>
 </div>
