@@ -131,7 +131,7 @@
         <!-- Première ligne de cartes -->
         <div class="col-12 col-md-6 mb-4">
             <div class="card p-3 h-100 text-center">
-                <h1 class="card-title">LFB</h1>
+                <h1 class="card-title">Poule A</h1>
                 {% if latestWeekLFB is not null %}
                     <h2>{{ totalPointsLFB | default(0) }} PTS SEMAINE {{ latestWeekLFB.id }}</h2>
                     <h2>RANKING SEMAINE {{ latestWeekLFB.id }}: {{ rankLFB | default(0) }}e / {{ totalUsersLFB | default(0) }}</h2>
@@ -143,7 +143,7 @@
         </div>
         <div class="col-12 col-md-6 mb-4">
             <div class="card p-3 h-100 text-center">
-                <h1 class="card-title">LF2</h1>
+                <h1 class="card-title">Poule B</h1>
                 {% if latestWeekLF2 is not null %}
                     <h2>{{ totalPointsLF2 | default(0) }} PTS SEMAINE {{ (latestWeekLF2.id - 22) }}</h2>
                     <h2>RANKING SEMAINE {{ (latestWeekLF2.id - 22) }}: {{ rankLF2 | default(0) }}e / {{ totalUsersLF2 | default(0) }}</h2>
@@ -159,14 +159,14 @@
         <!-- Deuxième ligne de cartes -->
         <div class="col-12 col-md-6 mb-4">
             <div class="card p-3 h-100 text-center">
-                <h1 class="card-title">LFB</h1>
+                <h1 class="card-title">Poule A</h1>
                 <h2>{{ app.user.getPtlLfb | default(0) }} PTS SAISON</h2>
                 <h3>{{ rankLFB | default(0) }}e / {{ totalUsersLFB | default(0) }}</h3>
             </div>
         </div>
         <div class="col-12 col-md-6 mb-4">
             <div class="card p-3 h-100 text-center">
-                <h1 class="card-title">LF2</h1>
+                <h1 class="card-title">Poule B</h1>
                 <h2>{{ app.user.getPtLf2 | default(0) }} PTS SAISON</h2>
                 <h3>{{ rankLF2 | default(0) }}e / {{ totalUsersLF2 | default(0) }}</h3>
             </div>
@@ -178,8 +178,8 @@
         <div class="col-12">
             <div class="card p-3 h-100 text-center">
                 <h1 class="card-title">5 MAJEUR</h1>
-                <h2>LFB</h2>
-                <h2>LF2</h2>
+                <h2>Poule A</h2>
+                <h2>Poule B</h2>
             </div>
         </div>
     </div>
