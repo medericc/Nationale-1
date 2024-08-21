@@ -5,11 +5,11 @@
   {% if hasData %}
     <div class="container-fluid my-4">
          <h2 class="text-center mb-4">
-                Classement pour la semaine 
+                Semaine
                 {% if league == 'lfb' %}
-                    {{ week.id }} dans la Poule A
+                    {{ week.id }} Poule A
                 {% else %}
-                    {{ week.id - 22 }} dans la Poule B
+                    {{ week.id - 22 }} Poule B
                 {% endif %}
             </h2>
       <div class="table-responsive"> <!-- Ajout de table-responsive pour mobile-first -->

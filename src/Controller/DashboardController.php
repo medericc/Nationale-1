@@ -297,6 +297,11 @@ if ($user instanceof User) {
             'hasData' => !empty($usersWithPoints) && $latestWeek !== null,
         ]);
     }
+    #[Route('/rules', name: 'rules_page')]
+    public function rulesPage(): Response
+    {
+        return $this->render('dashboard/rule.html.twig');
+    }
     
     
     

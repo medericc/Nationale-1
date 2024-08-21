@@ -4,39 +4,134 @@
 
 {% block body %}
 <style>
-    /* Arrière-plan de la page */
+    /* Set the dark background for the body */
     body {
-        background-color: #f1ebec; /* Gris clair mais pas trop */
+        background-color: #F5F5DC    ; /* Almost black background */
+        color: #f5f5f5; /* Light color for text */
     }
 
-    /* Cartes avec fond rose clair */
-    .card-custom {
-        background-color: #f52a4f; /* Rose clair */
-        color: #eef3f8; /* Texte plus sombre pour le contraste */
+    /* Set the card style with yellow background */
+    .card {
+        background-color: #C0C0C1 ; /* Muted yellow background */
+        color: #1a1a1a; /* Dark color for text */
+    }
+/* Additional styling for text inside the card */
+.card h1, .card h2 {
+    color: #1a1a1a; /* Dark color for text */
+    white-space: nowrap; /* Prevents wrapping */
+    overflow: hidden; /* Hides overflow text */
+    text-overflow: ellipsis; /* Adds ellipsis (...) for overflow text */
+    font-size: calc(1rem + 1vw); /* Adjusts font size based on viewport */
+}
+
+/* Ensure that the card can fit content properly */
+.card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%; /* Make sure cards take full height available */
+}
+
+    .card-title {
+         color: #1a1a1a; /* Yellow text color */
+        padding: 5px;
+        margin:auto;
+      
+        
+        border-radius: 5px;
+        
     }
 
-    /* Ajuster les marges pour éviter le débordement */
-    .container-fluid {
-        padding: 15px;
+    /* Additional styling for text inside the card */
+    .card h2, .card h3 {
+        color: #1a1a1a; /* Dark color for text */
+    }
+    /* Adjustments for smaller breakpoints */
+/* General styles for all cards */
+.card h1, .card h2, .card h3 {
+    color: #1a1a1a; /* Dark color for text */
+    white-space: nowrap; /* Prevents wrapping */
+    overflow: hidden; /* Hides overflow text */
+    text-overflow: ellipsis; /* Adds ellipsis (...) for overflow text */
+}
+
+/* Adjustments for various breakpoints */
+@media (min-width: 576px) and (max-width: 767px) {
+    .card-title {
+        font-size: 1.5rem; /* Slightly larger font size */
+        padding: 4px; /* Moderate padding */
+    }
+    .card h1 {
+        font-size: 1.2rem; /* Slightly larger font size for h1 */
+    }
+    .card h2 {
+        font-size: 1rem; /* Slightly larger font size for h2 */
+    }
+    .card h3 {
+        font-size: 0.9rem; /* Slightly larger font size for h3 */
+    }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+    .card-title {
+        font-size: 1.7rem; /* Larger font size */
+        padding: 6px; /* Increased padding */
+    }
+    .card h1 {
+        font-size: 1.4rem; /* Larger font size for h1 */
+    }
+    .card h2 {
+        font-size: 1.2rem; /* Larger font size for h2 */
+    }
+    .card h3 {
+        font-size: 1rem; /* Larger font size for h3 */
+    }
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+    .card-title {
+        font-size: 1.9rem; /* Larger font size */
+        padding: 8px; /* Increased padding */
+    }
+    .card h1 {
+        font-size: 1.6rem; /* Larger font size for h1 */
+    }
+    .card h2 {
+        font-size: 1.4rem; /* Larger font size for h2 */
+    }
+    .card h3 {
+        font-size: 1.2rem; /* Larger font size for h3 */
+    }
+}
+
+/* Large devices (desktops) */
+@media (min-width: 1200px) {
+    .card-title {
+        font-size: 2.2rem; /* Even larger font size */
+        padding: 10px; /* Further increased padding */
+    }
+    .card h1 {
+        font-size: 1.8rem; /* Larger font size for h1 */
+    }
+    .card h2 {
+        font-size: 1.6rem; /* Larger font size for h2 */
+    }
+    .card h3 {
+        font-size: 1.4rem; /* Larger font size for h3 */
     }
 
-    /* Réduire la largeur du bloc 5 MAJEUR pour éviter le débordement */
-    .card-deck-custom {
-        max-width: 90%;
-        margin: 0 auto; /* Centrer le bloc */
-    }
 
-    .text-light {
-        color: #721c24 !important; /* Assurer un bon contraste */
-    }
+}
+
+
 </style>
 
-<div class="container-fluid mt-3">
+<div class="container-fluid mt-5">
     <div class="row">
         <!-- Première ligne de cartes -->
         <div class="col-12 col-md-6 mb-4">
-            <div class="card card-custom text-center p-3 h-100">
-                <h1 class="card-title">Poule A</h1>
+            <div class="card p-3 h-100 text-center">
+                <h1 class="card-title">LFB</h1>
                 {% if latestWeekLFB is not null %}
                     <h2>{{ totalPointsLFB | default(0) }} PTS SEMAINE {{ latestWeekLFB.id }}</h2>
                     <h2>RANKING SEMAINE {{ latestWeekLFB.id }}: {{ rankLFB | default(0) }}e / {{ totalUsersLFB | default(0) }}</h2>
@@ -47,8 +142,8 @@
             </div>
         </div>
         <div class="col-12 col-md-6 mb-4">
-            <div class="card card-custom text-center p-3 h-100">
-                <h1 class="card-title">Poule B</h1>
+            <div class="card p-3 h-100 text-center">
+                <h1 class="card-title">LF2</h1>
                 {% if latestWeekLF2 is not null %}
                     <h2>{{ totalPointsLF2 | default(0) }} PTS SEMAINE {{ (latestWeekLF2.id - 22) }}</h2>
                     <h2>RANKING SEMAINE {{ (latestWeekLF2.id - 22) }}: {{ rankLF2 | default(0) }}e / {{ totalUsersLF2 | default(0) }}</h2>
@@ -63,15 +158,15 @@
     <div class="row">
         <!-- Deuxième ligne de cartes -->
         <div class="col-12 col-md-6 mb-4">
-            <div class="card card-custom text-center p-3 h-100">
-                <h1 class="card-title">Poule A</h1>
+            <div class="card p-3 h-100 text-center">
+                <h1 class="card-title">LFB</h1>
                 <h2>{{ app.user.getPtlLfb | default(0) }} PTS SAISON</h2>
                 <h3>{{ rankLFB | default(0) }}e / {{ totalUsersLFB | default(0) }}</h3>
             </div>
         </div>
         <div class="col-12 col-md-6 mb-4">
-            <div class="card card-custom text-center p-3 h-100">
-                <h1 class="card-title">Poule B</h1>
+            <div class="card p-3 h-100 text-center">
+                <h1 class="card-title">LF2</h1>
                 <h2>{{ app.user.getPtLf2 | default(0) }} PTS SAISON</h2>
                 <h3>{{ rankLF2 | default(0) }}e / {{ totalUsersLF2 | default(0) }}</h3>
             </div>
@@ -80,11 +175,11 @@
 
     <div class="row mb-4">
         <!-- Troisième ligne de cartes (deck) -->
-        <div class="col-12 card-deck-custom">
-            <div class="card card-custom text-center p-3 h-100">
+        <div class="col-12">
+            <div class="card p-3 h-100 text-center">
                 <h1 class="card-title">5 MAJEUR</h1>
-                <h2>Poule A</h2>
-                <h2>Poule B</h2>
+                <h2>LFB</h2>
+                <h2>LF2</h2>
             </div>
         </div>
     </div>

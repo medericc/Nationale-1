@@ -1,0 +1,66 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Règles de la Fantasy League{% endblock %}
+
+{% block body %}
+<div class="container mt-5 mb-5">
+    <h2 class="text-center text-primary mb-4">Règles de la Fantasy League</h2>
+    <p class="lead text-muted">
+        Chaque semaine, vous avez la possibilité de choisir un maximum de 5 joueuses issues de la LFB ou de la LF2 pour composer votre équipe. 
+        Une fois sélectionnées, ces joueuses seront indisponibles pour les 5 semaines suivantes, vous obligeant à diversifier vos choix et à éviter de toujours compter sur les mêmes stars. 
+        Les points que vous gagnez sont directement liés à leurs performances réelles sur le terrain : points marqués, passes décisives, rebonds, et autres statistiques. 
+        Utilisez votre flair pour dénicher les talents cachés et construire une stratégie gagnante sur la durée !
+    </p>
+</div>
+
+<style>
+ 
+
+    h2 {
+        font-weight: bold;
+        color: #007bff; /* Primary blue for the title */
+    }
+
+    p.lead {
+        font-size: 1.25rem;
+        line-height: 1.6;
+        color: #6c757d; /* Slightly gray text for soft contrast */
+    }
+
+    body {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh; /* Ensures the body covers the full height of the viewport */
+    }
+
+    .container {
+        flex: 1; /* Allows the container to grow and fill available space */
+    }
+
+    footer {
+        flex-shrink: 0; /* Prevents the footer from shrinking */
+    }
+    body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.container {
+    flex: 1;
+    padding-bottom: 60px; /* Adjust this padding based on footer height */
+}
+
+footer {
+    flex-shrink: 0;
+    padding: 10px 0; /* Ensure there's enough padding inside the footer */
+    background-color: #f8f9fa;
+    text-align: center;
+}
+
+.back-banner, .tout {
+    margin-bottom: 20px; /* Add margin to ensure there's space above the footer */
+}
+
+</style>
+{% endblock %}

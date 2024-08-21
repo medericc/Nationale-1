@@ -1,12 +1,12 @@
 <body class="min-h-screen flex flex-col">
-    <footer class="bg-black text-white py-4 mt-auto w-full">
+    <footer class=" text-white py-4 mt-auto w-full"  style="background-color: #000;">
         <div class="container mx-auto px-4">
-            <div class="flex flex-col justify-center items-center space-y-3">
-                <!-- Logo and Text Section -->
-                <div class="flex flex-col items-center w-full">
-                    <img src="/images/logo.jpg" class="rounded-full h-16 w-16 mb-2" alt="Logo">
-                    <p class="text-center m-0">FirstPick - Tous droits réservés</p>
-                </div>
+            <div class="justify-center items-center space-y-3 text-center">
+                <!-- Logo Section -->
+                <img src="{{ asset('images/logo.png') }}" alt="Logo" style="max-width: 60px; display: inline;">
+
+                <!-- Text Section -->
+                <p class="m-0 mt-2">FirstPick - Tous droits réservés</p>
             </div>
         </div>
     </footer>
