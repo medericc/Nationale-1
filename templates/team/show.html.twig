@@ -10,7 +10,7 @@
 {% elseif team.name in ['Annemasse'] %}
     <link href="{{ asset('styles/flammes.css') }}" rel="stylesheet">
 {% elseif team.name in ['Strasbourg SIG', 'Le Poinçonnet', 'Monaco Basket Association - 1
-', 'Feytiat Basket', 'BB La Tronche-Meylan', 'Le Havre Basket'] %}
+'] %}
     <link href="{{ asset('styles/esbva.css') }}" rel="stylesheet">
 {% elseif team.name in ['Roanne', 'Haguenau'] %}
     <link href="{{ asset('styles/charnay.css') }}" rel="stylesheet">
@@ -21,7 +21,7 @@
 {% elseif team.name in ['Trith Basket', 'Dieppe'] %}
     <link href="{{ asset('styles/dieppe.css') }}" rel="stylesheet">
 
-{% elseif team.name in ['La Glacerie', 'Charnay BBS'] %} 
+{% elseif team.name in ['La Glacerie'] %} 
     <link href="{{ asset('styles/bourges.css') }}" rel="stylesheet">
 {% elseif team.name in ["Centre fédéral", "Bihorel/HDR", "Côte d'Opale Basket Calais - 1", "Stade Français", "Franconville BCFPB", "Colomiers Basket", "Limoges ABC", "Lattes/Montpellier"] %}
     <link href="{{ asset('styles/blma.css') }}" rel="stylesheet">
@@ -58,7 +58,7 @@
               <td>{{ player.forename }}</td>
               <td>{{ player.name }}</td>
             <td>{{ player.rating|number_format(2, '.', '') }}</td>
-
+   
               <td>
                 <button type="button" class="add-player-btn" data-player-id="{{ player.id }}" data-player-forename="{{ player.forename }}" data-player-name="{{ player.name }}">
                   Ajouter
