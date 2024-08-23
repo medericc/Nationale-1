@@ -5,15 +5,22 @@
 {% block body %}
 {% if team.name in ['Escaudain', 'ASA Sceaux','Villeurbanne'] %}
     <link href="{{ asset('styles/montbrison.css') }}" rel="stylesheet">
+
 {% elseif team.name in ['Geispolsheim'] %}
     <link href="{{ asset('styles/landes.css') }}" rel="stylesheet">
+
 {% elseif team.name in ['Annemasse'] %}
     <link href="{{ asset('styles/flammes.css') }}" rel="stylesheet">
-{% elseif team.name in ['Strasbourg SIG', 'Le Poinçonnet', 'Monaco Basket Association - 1
-'] %}
+
+
+{% elseif team.name in ['Strasbourg SIG', 'Le Poinçonnet', 'Monaco BA'] %}
     <link href="{{ asset('styles/esbva.css') }}" rel="stylesheet">
+
+
 {% elseif team.name in ['Roanne', 'Haguenau'] %}
     <link href="{{ asset('styles/charnay.css') }}" rel="stylesheet">
+    
+
 {% elseif team.name in [ 'Martigues'] %}
     <link href="{{ asset('styles/martigues.css') }}" rel="stylesheet">
 {% elseif team.name in ['St-Delphin'] %}
@@ -21,10 +28,14 @@
 {% elseif team.name in ['Trith Basket', 'Dieppe'] %}
     <link href="{{ asset('styles/dieppe.css') }}" rel="stylesheet">
 
+
 {% elseif team.name in ['La Glacerie'] %} 
     <link href="{{ asset('styles/bourges.css') }}" rel="stylesheet">
-{% elseif team.name in ["Centre fédéral", "Bihorel/HDR", "Côte d'Opale Basket Calais - 1", "Stade Français", "Franconville BCFPB", "Colomiers Basket", "Limoges ABC", "Lattes/Montpellier"] %}
+
+{% elseif team.name in ["Centre fédéral", "Bihorel/HDR", "COB Calais", "Stade Français", "Franconville BCFPB", "Colomiers Basket", "Limoges ABC", "Lattes/Montpellier"] %}
     <link href="{{ asset('styles/blma.css') }}" rel="stylesheet">
+
+
 {% elseif team.name == "Champagne Basket" %}
     <link href="{{ asset('styles/alencon.css') }}" rel="stylesheet">
 {% endif %}

@@ -1,16 +1,16 @@
 body {
-    background-color: rgb(0, 0, 255) !important; /* Blue */
+    background-color: #0000CC !important; /* Blue */
 }
 button.add-player-btn:disabled {
-    background-color: rgb(0, 0, 255); /* Blue */
-    color: #ffff00; /* Yellow */
+    background-color: #0000CC; /* Blue */
+    color: #e9e90b; /* Yellow */
 }
 button.add-player-btn {
-    background-color: rgb(0, 0, 255); /* Blue */
-    color: #ffff00; /* Yellow */
+    background-color: #0000CC; /* Blue */
+    color: #e9e90b; /* Yellow */
 }
 .back-banner H1 {
-    color: #ffff00; /* Yellow */
+    color: #e9e90b; /* Yellow */
 }
 
 a.back-link {
@@ -35,21 +35,21 @@ a.back-link:active {
     padding: 8px;
     text-align: center;
     font-size: 0.875rem;
-    border: 1px solid #ccc;
+    vertical-align: middle;
+    border: 1px solid #d0d4d8;
+    font-weight: bold; /* Mettre en gras */
+    font-family: 'Arial', 'Helvetica', sans-serif; /* Police plus visible */
 }
 .table th {
-    background-color: rgb(0, 0, 255); /* Blue */
+    background-color: #e9e90b; /* Blue */
     font-weight: 600;
     text-transform: uppercase;
-    color: #000; /* Dark gray text */
+    color: #141681; /* Dark gray text */
 }
 .table tbody tr:nth-child(even) {
     background-color: #f3f4f6; /* Light gray background for even rows */
 }
-.table tbody tr:hover {
-    background-color: #374151; /* Darker gray for hover */
-    color: #ffffff; /* White text on hover */
-}
+
 .card {
     max-width: 377px;
     margin: 0 auto;
@@ -80,32 +80,32 @@ a.back-link:active {
 .back-banner {
     display: flex;
     align-items: center;
-    background-color: #0000FF; /* Blue */
+    background-color: #0000CC; /* Blue */
     padding: 16px;
-    margin-bottom: 16px;
+ 
     justify-content: center;
 }
 .back-link {
     display: flex;
     align-items: center;
-    color: #ffff00; /* Yellow */
+    color: #e9e90b; /* Yellow */
     margin-right: 16px;
     text-decoration: none;
 }
 .back-link i {
     font-size: 24px;
     margin-right: 16px;
-    color: #ffff00; /* Yellow */
+    color: #e9e90b; /* Yellow */
 }
 h1 {
     margin: 0;
-    color: #ffff00; /* Yellow */
+    color: #e9e90b; /* Yellow */
     font-size: 2.25rem;
     font-weight: bold;
 }
 button.add-player-btn {
     background-color: #0000FF; /* Blue */
-    color: #ffff00; /* Yellow */
+    color: #e9e90b; /* Yellow */
     padding: 5px 15px;
     border-radius: 9999px;
     border: none;
@@ -113,4 +113,36 @@ button.add-player-btn {
 }
 button.add-player-btn:hover {
     background-color: #0000CC; /* Darker Blue */
+}
+.table tr:nth-child(even) td {
+    color: #0000CC; /* Couleur du texte pour les lignes paires */
+    background-color: #e9e90b; /* Darker Blue */
+}
+.table tr:nth-child(odd) td {
+    color: #e9e90b; /* Couleur du texte pour les lignes paires */
+}
+.table tbody tr:nth-child(odd) button.add-player-btn { /* Si la ligne est rouge */
+    background-color: #e9e90b; /* Fond blanc */
+    color: #0000CC; /* Texte rouge */
+    padding: 5px 15px;
+    border-radius: 9999px;
+    border: none;
+    font-family: 'Arial', 'Helvetica', sans-serif; /* Police plus visible */
+   
+    font-weight: 600;
+    cursor: pointer;
+}
+/* Changer l'apparence des boutons lorsque la ligne est rouge */
+.table tbody tr:nth-child(even) button.add-player-btn { /* Si la ligne est rouge */
+    background-color: #0000CC; /* Fond rouge */
+    color: #e9e90b; /* Texte blanc */
+ 
+   
+    padding: 5px 15px;
+    border-radius: 9999px;
+    border: none;
+    font-family: 'Arial', 'Helvetica', sans-serif; /* Police plus visible */
+   
+    font-weight: 600;
+    cursor: pointer;
 }
