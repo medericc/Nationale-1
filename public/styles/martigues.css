@@ -7,7 +7,7 @@ button.add-player-btn:disabled {
 }
 button.add-player-btn {
     background-color: rgb(255, 165, 0); /* Orange */
-    color: #ffff00; /* Yellow */
+    color: #d1d108; /* Yellow */
 }
 .back-banner H1 {
     color: #ffff00; /* Yellow */
@@ -36,7 +36,7 @@ a.back-link:active {
     text-align: center;
     font-size: 0.875rem;
     vertical-align: middle;
-    border: 1px solid #b39618;
+    border: 1px solid #ffffff;
     font-weight: bold; /* Mettre en gras */
     font-family: 'Arial', 'Helvetica', sans-serif; /* Police plus visible */
 
