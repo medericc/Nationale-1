@@ -127,10 +127,7 @@ class DashboardController extends AbstractController
         $rankLFB = array_search($currentUser, $usersLFB) + 1;
         $rankLF2 = array_search($currentUser, $usersLF2) + 1;
     
-        // Trouver la dernière semaine écoulée pour LFB et LF2
-        $latestWeekLFBId = $weekRepository->findLatestElapsedWeek(1, 22); // Pour LFB, semaines 1-22
-        $latestWeekLF2Id = $weekRepository->findLatestElapsedWeek(23, 44); // Pour LF2, semaines 23-44
-    
+     
         // Récupérer les entités Week correspondantes
      // Trouver la dernière semaine écoulée pour LFB et LF2
 $latestWeekLFB = $weekRepository->findLatestElapsedWeek(1, 22); // Pour LFB, semaines 1-22
@@ -249,16 +246,22 @@ if ($user instanceof User) {
             throw $this->createAccessDeniedException('You must be logged in to view the ranking.');
         }
         
-        // Trouver la dernière semaine remplie dans la plage spécifiée
-        $latestWeek = $weekRepository->findLatestFilledWeek($startWeek, $endWeek);
-    
+        // Trouver la dernière semaine écoulée dans la plage spécifiée
+        $latestWeek = $weekRepository->findLatestElapsedWeek($startWeek, $endWeek);
+        
+        // Si aucune semaine écoulée n'a été trouvée, utiliser la première semaine de la plage
         if (!$latestWeek) {
-            throw $this->createNotFoundException('No filled week found for the specified league.');
+            $latestWeek = $weekRepository->find($startWeek);
         }
     
-        // Récupérer les choix des utilisateurs pour la dernière semaine
-        $choices = $choiceRepository->findBy(['week' => $latestWeek]);
+        // Si aucune semaine n'est trouvée (par exemple, si aucune semaine n'a commencé), on retourne une erreur ou un message approprié
+        if (!$latestWeek) {
+            throw $this->createNotFoundException('No valid week found for the specified league.');
+        }
     
+        // Récupérer les choix des utilisateurs pour la dernière semaine écoulée ou la première semaine
+        $choices = $choiceRepository->findBy(['week' => $latestWeek]);
+        
         // Calculer les points pour chaque utilisateur
         $userPoints = [];
         foreach ($choices as $choice) {
@@ -269,29 +272,36 @@ if ($user instanceof User) {
             $userPoints[$userId] += $choice->getPoints();
         }
     
-        // Récupérer les utilisateurs par leurs IDs et trier par points
-        $users = $userRepository->findBy(['id' => array_keys($userPoints)], []);
-        usort($users, function($a, $b) use ($userPoints) {
-            return $userPoints[$b->getId()] <=> $userPoints[$a->getId()];
-        });
+        // Récupérer les utilisateurs par leurs IDs et trier par points (si des choix existent)
+        $usersWithPoints = [];
+        if (!empty($userPoints)) {
+            $users = $userRepository->findBy(['id' => array_keys($userPoints)], []);
+            usort($users, function($a, $b) use ($userPoints) {
+                return $userPoints[$b->getId()] <=> $userPoints[$a->getId()];
+            });
     
-        // Déterminer le rang de l'utilisateur connecté
-        $userRank = null;
-        foreach ($users as $index => $user) {
-            if ($user instanceof User && $user->getId() === $currentUser->getId()) {
-                $userRank = $index + 1;
-                break;
+            // Associer les points calculés aux utilisateurs
+            foreach ($users as $user) {
+                $usersWithPoints[] = [
+                    'user' => $user,
+                    'pointsForWeek' => $userPoints[$user->getId()] ?? 0
+                ];
             }
         }
     
-        // Associer les points calculés aux utilisateurs pour les passer au template
-        $usersWithPoints = [];
-        foreach ($users as $user) {
-            $usersWithPoints[] = [
-                'user' => $user,
-                'pointsForWeek' => $userPoints[$user->getId()]
-            ];
+        // Déterminer le rang de l'utilisateur connecté (s'il a des points)
+        $userRank = null;
+        if (!empty($usersWithPoints)) {
+            foreach ($usersWithPoints as $index => $userWithPoints) {
+                if ($userWithPoints['user']->getId() === $currentUser->getId()) {
+                    $userRank = $index + 1;
+                    break;
+                }
+            }
         }
+    
+        // Passer 'hasData' à vrai si une semaine a été trouvée, même si aucun point n'a été attribué
+        $hasData = ($latestWeek !== null);
     
         return $this->render('dashboard/ranking.week.html.twig', [
             'week' => $latestWeek,
@@ -299,7 +309,7 @@ if ($user instanceof User) {
             'league' => $league,
             'currentUser' => $currentUser,
             'userRank' => $userRank,
-            'hasData' => !empty($usersWithPoints) && $latestWeek !== null,
+            'hasData' => $hasData,
         ]);
     }
     #[Route('/rules', name: 'rules_page')]
