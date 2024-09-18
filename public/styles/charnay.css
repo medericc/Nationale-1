@@ -41,17 +41,24 @@ a.back-link:active {
 
 
 .table thead th {
-    background-color: #333030; /* Fond noir */
+    background-color: #fff; /* Fond noir */
     font-weight: 600;
     text-transform: uppercase;
-    color: #FFFFFF; /* Texte blanc */
+    color: rgb(224, 128, 208); /* Texte blanc */
 }
 
 .table tbody tr:nth-child(even) {
     background-color: #f2f2f2; /* Fond gris clair pour les lignes paires */
 }
 
+.table tr:nth-child(odd) td {
+    color: #fff; /* Couleur du texte pour les lignes impaires */
+}
 
+
+.table tr:nth-child(even) td {
+    color: rgb(224, 128, 208); /* Couleur du texte pour les lignes paires */
+}
 
 .card {
     width: 100%; /* Utiliser la pleine largeur disponible */
