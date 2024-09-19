@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b62578871e6184838ff6fa300d3a1b66",
+    "content-hash": "256b2f785b09b5bd13c267b7608ba19f",
     "packages": [
         {
             "name": "doctrine/cache",
@@ -6893,16 +6893,16 @@
         },
         {
             "name": "symfony/ux-react",
-            "version": "v2.16.0",
+            "version": "v2.19.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/ux-react.git",
-                "reference": "b8c852d858e16e568436e168bb62e28d8490d0ad"
+                "reference": "6518cecc62c800b1ece02b70d1dec0067d012495"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/ux-react/zipball/b8c852d858e16e568436e168bb62e28d8490d0ad",
-                "reference": "b8c852d858e16e568436e168bb62e28d8490d0ad",
+                "url": "https://api.github.com/repos/symfony/ux-react/zipball/6518cecc62c800b1ece02b70d1dec0067d012495",
+                "reference": "6518cecc62c800b1ece02b70d1dec0067d012495",
                 "shasum": ""
             },
             "require": {
@@ -6949,7 +6949,7 @@
                 "symfony-ux"
             ],
             "support": {
-                "source": "https://github.com/symfony/ux-react/tree/v2.16.0"
+                "source": "https://github.com/symfony/ux-react/tree/v2.19.3"
             },
             "funding": [
                 {
@@ -6965,7 +6965,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-01-07T03:52:48+00:00"
+            "time": "2024-08-14T04:55:38+00:00"
         },
         {
             "name": "symfony/ux-turbo",

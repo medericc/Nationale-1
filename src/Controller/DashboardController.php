@@ -176,6 +176,7 @@ if ($user instanceof User) {
     $this->updateUserPoints($entityManager);
 }
 
+
     
             return new Response('Player successfully removed from the DECK and points updated.', Response::HTTP_OK);
         } catch (\Exception $e) {
